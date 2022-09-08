@@ -25,11 +25,12 @@ export const REMOVE_TAG_USER = 'REMOVE_TAG_USER';
 
 // actions requêtant au serveur les données user / another member
 export const GET_MY_LIBRARY = 'GET_MY_LIBRARY'; 
-export const GET_MEMBER_PROFILE = 'GET_MEMBER_PROFILE'
+export const GET_MEMBER_PROFILE = 'GET_MEMBER_PROFILE';
 //zipcode, area, labels, bio, pic
 // toggle de la modale de connexion/inscription
 export const TOGGLE_SIGN_IN_MODAL = 'TOGGLE_SIGN_IN_MODAL';
 export const DISPATCH_ERROR = 'DISPATCH_ERROR';
+export const CLEAR_ERROR = 'CLEAR_ERROR';
 
 export const setUserField = (value, name) => ({
 	type: SET_USER_FIELD,
@@ -126,4 +127,8 @@ export const endLoan = (loanId) =>({
 
 export const dispatchError = () =>({
 	type: DISPATCH_ERROR,
+});
+
+export const clearError = () =>({
+	type: CLEAR_ERROR,
 });

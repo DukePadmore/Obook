@@ -6,7 +6,7 @@ import SignInPartModal from "./SignInPartModal/SignInPartModal";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { setUserField, signIn, signUp, clearPasswords } from "../../../../actions/user";
+import { setUserField, signIn, signUp, clearPasswords, clearError } from "../../../../actions/user";
 import './styles.scss';
 import { NavLink } from "react-router-dom";
 import { toggleSignInModal } from "../../../../actions/user";
@@ -51,7 +51,8 @@ export const LoginModal=()=>{
     if(newPassword && newPasswordConfirm){
       if(newPasswordConfirm === newPassword){
         dispatch(signUp()),
-        setIsPasswordValid(true)
+        setIsPasswordValid(true),
+        dispatch(clearError())
         
       }else{
         setErrorMessage("Erreur : les mots de passe sont différents"),
@@ -68,7 +69,8 @@ export const LoginModal=()=>{
     setLoginForm(!loginForm)
   }
   const handleQuit = ()=>{
-    dispatch(toggleSignInModal(false))
+    dispatch(toggleSignInModal(false));
+    dispatch(clearError());
   }
  
   const [loginForm, setLoginForm] = useState(true);
@@ -108,7 +110,7 @@ export const LoginModal=()=>{
             <Field value= {newPasswordConfirm} type= "password" name= "newPasswordConfirm" placeholder = "Confirmez le Mot de Passe" onChange=  {onChange} />
             <Button name="S'inscrire" value="signupButton" className="signup-button p-2 px-3 m-2 rounded bg-[#292F44] text-[#F5F5F5]" />
             <a className='block' onClick={handleClick}>Déjà inscrit ?</a>
-            {!isPasswordValid && <p>{errorMessage}</p>}
+            {!isPasswordValid && <p className="text-red-700">{errorMessage}</p>}
           </form>
         <EscapeButton className='text-[#292F44] text-3xl m-3 cursor-pointer' onClick={handleQuit}/>
         </>

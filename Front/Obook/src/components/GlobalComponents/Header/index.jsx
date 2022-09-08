@@ -17,6 +17,7 @@ const Header=()=>{
         console.log("LOGOUT !!")
         dispatch(logOut());
         dispatch(toggleSignInModal(false));
+        
     };
 
     const handleSignButton = ()=>{

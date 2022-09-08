@@ -106,7 +106,7 @@ const Account = () =>{
         dispatch(sendModifiedInfos({
             ...modifiedInfo,
 
-        }))
+        }));
     }
 
     return (
@@ -115,7 +115,7 @@ const Account = () =>{
         <div className="desktop:w-1/2 mobile:w-full">
         {/* Upload D' images */}
             <div className="flex justify-center desktop:items-end mobile:items-center m-5 mobile:flex-col desktop:flex-row">
-                <img className="rounded-full h-40 w-40" src={userImg}></img>
+                <img className="rounded-full h-40 w-40" src={userImg||"https://res.cloudinary.com/obook/image/upload/v1661345211/nl2gtqzgbnqyo5ilgzfz.jpg"}></img>
                 <div className="flex flex-col">
                     <input type="file" onChange={event=>setImageSelected(event.target.files[0])}/>
                     <button className="bg-[#292F44] text-[#F5F5F5] rounded-md h-1/2" name="upload Image" onClick={uploadImage}>Upload Image</button>
